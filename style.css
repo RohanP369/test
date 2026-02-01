@@ -93,25 +93,55 @@ audio {
     font-size: 1.5rem;
 }
 
-.memory-img, .memory-video {
+/* FIXED: Better image container */
+.memory-media {
     width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    border: 3px solid #ffcdd2;
+    margin: 20px 0;
+    text-align: center;
 }
 
+/* FIXED: Better image sizing */
+.memory-img {
+    max-width: 100%;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    border: 3px solid #ffcdd2;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain; /* Changed from 'cover' to 'contain' */
+    background: #f5f5f5;
+}
+
+/* FIXED: Better video sizing */
 .memory-video {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    border-radius: 10px;
+    border: 3px solid #ffcdd2;
+    display: block;
+    margin: 0 auto;
     background: #000;
+}
+
+/* Video controls styling */
+.memory-video::-webkit-media-controls-panel {
+    background: rgba(198, 40, 40, 0.8);
 }
 
 .memory-text {
     color: #555;
     line-height: 1.8;
-    margin-top: 15px;
+    margin-top: 20px;
     font-size: 1.1rem;
     white-space: pre-line;
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+    border-left: 4px solid #c62828;
 }
 
 footer {
@@ -172,6 +202,14 @@ footer {
     
     .memory {
         padding: 20px;
+    }
+    
+    .memory-img {
+        max-height: 300px;
+    }
+    
+    .memory-video {
+        max-height: 300px;
     }
     
     .rose {
