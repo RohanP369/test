@@ -7,16 +7,14 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        .memory-img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-    </style>
 </head>
 <body>
+    <!-- Decorative roses -->
+    <div class="rose rose-1">🌹</div>
+    <div class="rose rose-2">🌹</div>
+    <div class="rose rose-3">🌹</div>
+    <div class="rose rose-4">🌹</div>
+    
     <div class="container">
         <header>
             <h1>To My Beautiful Valentine</h1>
@@ -35,63 +33,99 @@
         </header>
 
         <main>
-            <!-- Memory 1 -->
+            <!-- Memory 1 - WITH VIDEO -->
             <div class="memory">
-                <div class="memory-date">June 27, 2025</div>
+                <div class="memory-date">June 27, 2023</div>
                 <h2>Our First Meeting</h2>
-                <video src="firstmeet.MP4" alt="Our memory" class="memory-video">
+                
+                <div class="memory-media">
+                    <video controls class="memory-video">
+                        <source src="firstmeet.mp4" type="video/mp4">
+                        Your browser does not support videos. Please update your browser.
+                    </video>
+                </div>
+                
                 <p class="memory-text">
-                    This is where you write your special note about this memory. 
-                    Write from your heart about what made this day special.
+                    The day my life changed forever. I still remember how you smiled and my heart skipped a beat. From that moment, I knew you were someone special.
+                    
+                    Every time I watch this video, I feel that same excitement. You looked so beautiful that day, and I was so nervous but happy to finally meet you.
                 </p>
             </div>
 
-            <!-- Memory 2 -->
+            <!-- Memory 2 - WITH PHOTO -->
             <div class="memory">
-                <div class="memory-date">June 15, 2023</div>
-                <h2>Our First Trip Together</h2>
-                <img src="random.png" alt="Our trip" class="memory-img">
+                <div class="memory-date">July 15, 2023</div>
+                <h2>Our First Date</h2>
+                
+                <div class="memory-media">
+                    <img src="firstdate.jpg" alt="Our first date at the restaurant" class="memory-img">
+                </div>
+                
                 <p class="memory-text">
-                    Write about your trip here. Remember that sunset? 
-                    Describe how you felt in that moment.
+                    That magical evening when we talked for hours without realizing how time flew. Your laughter was the sweetest sound I'd ever heard.
+                    
+                    I remember you ordered pasta and kept saying how delicious it was. The way your eyes lit up when you talked about your dreams... that's when I started falling for you.
                 </p>
             </div>
 
-            <!-- Memory 3 -->
+            <!-- Memory 3 - WITH PHOTO -->
             <div class="memory">
                 <div class="memory-date">December 25, 2023</div>
-                <h2>Christmas Morning</h2>
-                <img src="photo3.jpg" alt="Christmas" class="memory-img">
+                <h2>First Christmas Together</h2>
+                
+                <div class="memory-media">
+                    <img src="christmas.jpg" alt="Christmas morning together" class="memory-img">
+                </div>
+                
                 <p class="memory-text">
-                    Write about Christmas morning. What made it special? 
-                    How did you feel waking up together?
+                    Waking up next to you on Christmas morning was the best gift I could ever ask for. Seeing your smile made the whole world brighter.
+                    
+                    You looked so cute in your Christmas pajamas, and the way you opened your presents with such joy... I knew I wanted to spend every Christmas with you.
                 </p>
             </div>
 
-            <!-- Add more memories as needed -->
-            <div class="memory">
-                <div class="memory-date">Add Date Here</div>
-                <h2>Add Memory Title</h2>
-                <img src="photo4.jpg" alt="Another memory" class="memory-img">
-                <p class="memory-text">
-                    Add your personal note here. Write what's in your heart.
-                </p>
-            </div>
+            <!-- Add more memories following this EXACT pattern -->
+            
         </main>
 
         <footer>
             <p class="love-message">
                 Made with <span class="heart">❤️</span> for my forever Valentine
             </p>
-            <p>Every day with you is a blessing</p>
+            <p>Every day with you is a blessing I don't take for granted</p>
+            <p style="margin-top: 20px; font-size: 0.9rem; color: #a1887f;">
+                <i class="fas fa-music"></i> Click play to hear our song
+            </p>
         </footer>
     </div>
 
     <script>
-        // Auto-play music gently
-        document.addEventListener('click', function() {
+        // Simple script for better user experience
+        document.addEventListener('DOMContentLoaded', function() {
             const audio = document.getElementById('myAudio');
-            audio.play().catch(e => console.log("Playback requires user interaction"));
+            
+            // Try gentle autoplay
+            setTimeout(() => {
+                audio.volume = 0.5;
+                audio.play().catch(e => {
+                    console.log("Audio will play when user clicks");
+                });
+            }, 500);
+            
+            // Show loading messages for media
+            document.querySelectorAll('img, video').forEach(media => {
+                media.addEventListener('load', function() {
+                    console.log("Media loaded:", this.src);
+                });
+                
+                media.addEventListener('error', function() {
+                    console.log("Error loading:", this.src);
+                    // Show placeholder if image fails
+                    if (this.tagName === 'IMG') {
+                        this.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23ffebee"/><text x="50" y="50" font-family="Arial" font-size="10" fill="%23c62828" text-anchor="middle" dy=".3em">Our Memory ❤️</text></svg>';
+                    }
+                });
+            });
         });
     </script>
 </body>
