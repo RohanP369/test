@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Valentine ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        .memory-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>To My Beautiful Valentine</h1>
+            <p class="subtitle">Every moment with you is special</p>
+            
+            <div class="music-player">
+                <div class="music-info">
+                    <i class="fas fa-music"></i>
+                    <span>Our Song</span>
+                </div>
+                <audio id="myAudio" controls>
+                    <source src="song.mp3" type="audio/mpeg">
+                    Your browser does not support audio
+                </audio>
+            </div>
+        </header>
+
+        <main>
+            <!-- Memory 1 -->
+            <div class="memory">
+                <div class="memory-date">February 14, 2023</div>
+                <h2>Our First Valentine's Day</h2>
+                <img src="photo1.jpg" alt="Our memory" class="memory-img">
+                <p class="memory-text">
+                    This is where you write your special note about this memory. 
+                    Write from your heart about what made this day special.
+                </p>
+            </div>
+
+            <!-- Memory 2 -->
+            <div class="memory">
+                <div class="memory-date">June 15, 2023</div>
+                <h2>Our First Trip Together</h2>
+                <img src="photo2.jpg" alt="Our trip" class="memory-img">
+                <p class="memory-text">
+                    Write about your trip here. Remember that sunset? 
+                    Describe how you felt in that moment.
+                </p>
+            </div>
+
+            <!-- Memory 3 -->
+            <div class="memory">
+                <div class="memory-date">December 25, 2023</div>
+                <h2>Christmas Morning</h2>
+                <img src="photo3.jpg" alt="Christmas" class="memory-img">
+                <p class="memory-text">
+                    Write about Christmas morning. What made it special? 
+                    How did you feel waking up together?
+                </p>
+            </div>
+
+            <!-- Add more memories as needed -->
+            <div class="memory">
+                <div class="memory-date">Add Date Here</div>
+                <h2>Add Memory Title</h2>
+                <img src="photo4.jpg" alt="Another memory" class="memory-img">
+                <p class="memory-text">
+                    Add your personal note here. Write what's in your heart.
+                </p>
+            </div>
+        </main>
+
+        <footer>
+            <p class="love-message">
+                Made with <span class="heart">❤️</span> for my forever Valentine
+            </p>
+            <p>Every day with you is a blessing</p>
+        </footer>
+    </div>
+
+    <script>
+        // Auto-play music gently
+        document.addEventListener('click', function() {
+            const audio = document.getElementById('myAudio');
+            audio.play().catch(e => console.log("Playback requires user interaction"));
+        });
+    </script>
+</body>
+</html>
