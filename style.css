@@ -6,19 +6,20 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: #fff8f8;
+    background: linear-gradient(135deg, #fff8f8 0%, #fff0f0 100%);
     color: #333;
     line-height: 1.6;
+    min-height: 100vh;
     padding: 20px;
 }
 
 .container {
     max-width: 800px;
     margin: 0 auto;
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
     padding: 30px;
-    box-shadow: 0 10px 30px rgba(198, 40, 40, 0.1);
+    box-shadow: 0 10px 30px rgba(198, 40, 40, 0.15);
     border: 2px solid #ef5350;
 }
 
@@ -34,12 +35,14 @@ h1 {
     font-size: 3rem;
     color: #c62828;
     margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .subtitle {
     color: #8b0000;
     font-size: 1.2rem;
     margin-bottom: 20px;
+    font-weight: 300;
 }
 
 .music-player {
@@ -50,6 +53,7 @@ h1 {
     align-items: center;
     gap: 15px;
     margin-top: 20px;
+    border: 2px solid #ef5350;
 }
 
 .music-player i {
@@ -58,7 +62,8 @@ h1 {
 }
 
 audio {
-    width: 200px;
+    width: 250px;
+    height: 40px;
 }
 
 .memory {
@@ -66,12 +71,18 @@ audio {
     padding: 25px;
     background: #fff8f8;
     border-radius: 15px;
-    border-left: 5px solid #c62828;
+    border: 2px solid #ffcdd2;
+    transition: transform 0.3s ease;
+}
+
+.memory:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(198, 40, 40, 0.1);
 }
 
 .memory-date {
     font-family: 'Dancing Script', cursive;
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: #c62828;
     margin-bottom: 10px;
 }
@@ -82,11 +93,25 @@ audio {
     font-size: 1.5rem;
 }
 
+.memory-img, .memory-video {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 3px solid #ffcdd2;
+}
+
+.memory-video {
+    background: #000;
+}
+
 .memory-text {
     color: #555;
     line-height: 1.8;
     margin-top: 15px;
     font-size: 1.1rem;
+    white-space: pre-line;
 }
 
 footer {
@@ -100,12 +125,14 @@ footer {
 .love-message {
     font-size: 1.5rem;
     margin-bottom: 10px;
+    font-family: 'Dancing Script', cursive;
 }
 
 .heart {
     color: #c62828;
     animation: heartbeat 1.5s infinite;
     display: inline-block;
+    margin: 0 5px;
 }
 
 @keyframes heartbeat {
@@ -113,10 +140,30 @@ footer {
     50% { transform: scale(1.2); }
 }
 
+/* Rose decorations */
+.rose {
+    position: fixed;
+    font-size: 2rem;
+    color: #c62828;
+    opacity: 0.3;
+    z-index: -1;
+    animation: float 6s infinite ease-in-out;
+}
+
+.rose-1 { top: 10%; left: 5%; }
+.rose-2 { top: 15%; right: 8%; }
+.rose-3 { bottom: 20%; left: 10%; }
+.rose-4 { bottom: 10%; right: 5%; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .container {
-        padding: 20px;
+        padding: 15px;
     }
     
     h1 {
@@ -125,5 +172,13 @@ footer {
     
     .memory {
         padding: 20px;
+    }
+    
+    .rose {
+        display: none;
+    }
+    
+    audio {
+        width: 200px;
     }
 }
