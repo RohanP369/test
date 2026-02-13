@@ -1,132 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Valentine Bissu ❤️</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<body>
-    <!-- Decorative roses -->
-    <div class="rose rose-1">🌹</div>
-    <div class="rose rose-2">🌹</div>
-    <div class="rose rose-3">🌹</div>
-    <div class="rose rose-4">🌹</div>
-    
-    <div class="container">
-        <header>
-            <h1>To My Beautiful Valentine I Love You Always</h1>
-            <p class="subtitle">These are only some of the many memories that we have shared together, but these are the few that will forever be in our hearts</p>
-            
-            <div class="music-player">
-                <div class="music-info">
-                    <i class="fas fa-music"></i>
-                    <span>Our Song</span>
-                </div>
-                <audio id="myAudio" controls>
-                    <source src="OurSong.mp3" type="audio/mpeg">
-                    Your browser does not support audio
-                </audio>
+<main class="timeline">
+    <!-- Memory 1 -->
+    <div class="timeline-item">
+        <div class="timeline-date">June 27, 2025</div>
+        <div class="memory-card">
+            <h2>Our First Meeting</h2>
+            <div class="memory-media">
+                <video controls class="memory-video">
+                    <source src="first.mp4" type="video/mp4">
+                </video>
             </div>
-        </header>
-
-        <main>
-            <!-- Memory 1 - WITH VIDEO -->
-            <div class="memory">
-                <div class="memory-date">June 27, 2025</div>
-                <h2>Our First Meeting</h2>
+            <p class="memory-text">
+                The day my life changed forever. I still remember how you smiled and my heart skipped a beat, it was love at first sight. From that moment, I knew you were someone special.
                 
-                <div class="memory-media">
-                    <video controls class="memory-video">
-                        <source src="first.mp4" type="video/mp4">
-                        Your browser does not support videos. Please update your browser.
-                    </video>
-                </div>
-                
-                <p class="memory-text">
-                    The day my life changed forever. I still remember how you smiled and my heart skipped a beat. From that moment, I knew you were someone special.
-                    
-                    Every time I watch this video, I feel that same excitement. You looked so beautiful that day, and I was so nervous but happy to finally meet you.
-                </p>
-            </div>
-
-            <!-- Memory 2 - WITH PHOTO -->
-            <div class="memory">
-                <div class="memory-date">July 15, 2023</div>
-                <h2>Our First Date</h2>
-                
-                <div class="memory-media">
-                    <img src="random.jpg" alt="Our first date at the restaurant" class="memory-img">
-                </div>
-                
-                <p class="memory-text">
-                    That magical evening when we talked for hours without realizing how time flew. Your laughter was the sweetest sound I'd ever heard.
-                    
-                    I remember you ordered pasta and kept saying how delicious it was. The way your eyes lit up when you talked about your dreams... that's when I started falling for you.
-                </p>
-            </div>
-
-            <!-- Memory 3 - WITH PHOTO -->
-            <div class="memory">
-                <div class="memory-date">December 25, 2023</div>
-                <h2>First Christmas Together</h2>
-                
-                <div class="memory-media">
-                    <img src="christmas.jpg" alt="Christmas morning together" class="memory-img">
-                </div>
-                
-                <p class="memory-text">
-                    Waking up next to you on Christmas morning was the best gift I could ever ask for. Seeing your smile made the whole world brighter.
-                    
-                    You looked so cute in your Christmas pajamas, and the way you opened your presents with such joy... I knew I wanted to spend every Christmas with you.
-                </p>
-            </div>
-
-            <!-- Add more memories following this EXACT pattern -->
-            
-        </main>
-
-        <footer>
-            <p class="love-message">
-                Made with <span class="heart">❤️</span> for my forever Valentine
+                Every time I watch this video, it takes me back to that day. You looked so beautiful and I was so nervous that didn't know what to say (until I got lil drunk) after that well you already know 😉.
             </p>
-            <p>Every day with you is a blessing I don't take for granted</p>
-            <p style="margin-top: 20px; font-size: 0.9rem; color: #a1887f;">
-                <i class="fas fa-music"></i> Click play to hear our song
-            </p>
-        </footer>
+        </div>
     </div>
 
-    <script>
-        // Simple script for better user experience
-        document.addEventListener('DOMContentLoaded', function() {
-            const audio = document.getElementById('myAudio');
-            
-            // Try gentle autoplay
-            setTimeout(() => {
-                audio.volume = 0.5;
-                audio.play().catch(e => {
-                    console.log("Audio will play when user clicks");
-                });
-            }, 500);
-            
-            // Show loading messages for media
-            document.querySelectorAll('img, video').forEach(media => {
-                media.addEventListener('load', function() {
-                    console.log("Media loaded:", this.src);
-                });
+    <!-- Memory 2 -->
+    <div class="timeline-item">
+        <div class="timeline-date">June 30, 2025</div>
+        <div class="memory-card">
+            <h2>Our First Date</h2>
+            <div class="memory-media">
+                <img src="datekiss.jpg" alt="Our first date" class="memory-img">
+            </div>
+            <p class="memory-text">
+                This was our first offical date together, I mean we weren't alone but still I think it counts. We were still in that phase of being comfortable with each other but still very shy.
                 
-                media.addEventListener('error', function() {
-                    console.log("Error loading:", this.src);
-                    // Show placeholder if image fails
-                    if (this.tagName === 'IMG') {
-                        this.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23ffebee"/><text x="50" y="50" font-family="Arial" font-size="10" fill="%23c62828" text-anchor="middle" dy=".3em">Our Memory ❤️</text></svg>';
-                    }
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+                I remember you were lost and we had to wait for you (like always 🙄) and even when taking photos we both were shy. Then we went to the restaurant and had food and drinks and you held my hand and we looked into each other eyes and had our first kiss. This day was also when KC's Bar ko uk 😜 suru vako ani tespaxi tw sadhai thamel gaye paxi ek choti tw janu nai parxa hahah.
+            </p>
+        </div>
+    </div>
+
+    <!-- Memory 3 -->
+    <div class="timeline-item">
+        <div class="timeline-date">July 09, 2025</div>
+        <div class="memory-card">
+            <h2>Bihe Ko Din</h2>
+            <div class="memory-media">
+                <img src="wedding.jpg" alt="Wedding day" class="memory-img">
+            </div>
+            <p class="memory-text">
+                Riya didi ko bihe ma, timlai kurda kurda I started feeling anxious because you were taking so long to show up ani I also couldn't wait to see how you looked. When you finally arrived, my heart skipped a beat seeing how beautiful you looked 😍.
+                
+                We couldn't act like a couple since sabbai family haru hununthiyo, so hami group ma basyum tara timi hami sanga vanda sani sanga aajai basyo. Tarw ni, we were always next to each other and we talked through our eyes, shared quiet smiles, and spoke without really looking at each other. Ani aslo yo photo khichda I was a little scared timlai ni thaxa kina ki kasailey dhekxa vanera, but now this moment lives with us as a memory we won't forget 🥰.
+            </p>
+        </div>
+    </div>
+
+    <!-- Continue this pattern for ALL your memories -->
+    <!-- Copy the same structure for each memory block -->
+    
+</main>
