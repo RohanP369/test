@@ -1,55 +1,604 @@
-<main class="timeline">
-    <!-- Memory 1 -->
-    <div class="timeline-item">
-        <div class="timeline-date">June 27, 2025</div>
-        <div class="memory-card">
-            <h2>Our First Meeting</h2>
-            <div class="memory-media">
-                <video controls class="memory-video">
-                    <source src="first.mp4" type="video/mp4">
-                </video>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>For My Valentine Bisu ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Proposal Page Styles */
+        .proposal-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff4081 0%, #c62828 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .proposal-content {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 90%;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .proposal-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #c62828;
+            margin-bottom: 20px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .proposal-subtitle {
+            font-size: 1.2rem;
+            color: #8b0000;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .hearts {
+            font-size: 2rem;
+            color: #ff4081;
+            margin: 30px 0;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        .hearts span {
+            margin: 0 10px;
+        }
+
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn-yes, .btn-no {
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            font-family: 'Dancing Script', cursive;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .btn-yes {
+            background: #4CAF50;
+            color: white;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .btn-yes:hover {
+            background: #388E3C;
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .btn-yes:active {
+            transform: scale(0.95);
+        }
+
+        .btn-no {
+            background: #f44336;
+            color: white;
+            box-shadow: 0 5px 15px rgba(244, 67, 54, 0.3);
+            transition: all 0.1s ease;
+        }
+
+        /* Hide main site initially */
+        .main-site {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .main-site.visible {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Floating hearts in background */
+        .floating-heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: rgba(255, 64, 129, 0.5);
+            animation: floatHeart 15s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes floatHeart {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Mobile Responsive for Proposal */
+        @media (max-width: 768px) {
+            .proposal-content {
+                padding: 25px;
+                width: 95%;
+            }
+            .proposal-title {
+                font-size: 2.5rem;
+            }
+            .options {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .btn-yes, .btn-no {
+                width: 100%;
+                max-width: 250px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .proposal-title {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.8rem !important;
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+    <!-- VALENTINE PROPOSAL PAGE -->
+    <div class="proposal-container" id="proposalPage">
+        <!-- Floating hearts -->
+        <div class="floating-heart" style="left: 10%; animation-delay: 0s;">❤️</div>
+        <div class="floating-heart" style="left: 20%; animation-delay: 1s;">❤️</div>
+        <div class="floating-heart" style="left: 30%; animation-delay: 2s;">❤️</div>
+        <div class="floating-heart" style="left: 40%; animation-delay: 3s;">❤️</div>
+        <div class="floating-heart" style="left: 50%; animation-delay: 4s;">❤️</div>
+        <div class="floating-heart" style="left: 60%; animation-delay: 5s;">❤️</div>
+        <div class="floating-heart" style="left: 70%; animation-delay: 6s;">❤️</div>
+        <div class="floating-heart" style="left: 80%; animation-delay: 7s;">❤️</div>
+        <div class="floating-heart" style="left: 90%; animation-delay: 8s;">❤️</div>
+        
+        <div class="proposal-content">
+            <div class="hearts">
+                <span>❤️</span><span>💕</span><span>💖</span><span>💘</span><span>💝</span>
             </div>
-            <p class="memory-text">
-                The day my life changed forever. I still remember how you smiled and my heart skipped a beat, it was love at first sight. From that moment, I knew you were someone special.
-                
-                Every time I watch this video, it takes me back to that day. You looked so beautiful and I was so nervous that didn't know what to say (until I got lil drunk) after that well you already know 😉.
+            <h1 class="proposal-title">My Dearest Maya</h1>
+            <p class="proposal-subtitle">
+                Before we begin our journey through some of our memories,<br>
+                I have a very important question for you...
+            </p>
+            <div class="hearts">
+                <span>💖</span><span>💘</span><span>💝</span>
+            </div>
+            <h2 style="font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: #c62828; margin: 30px 0;">
+                Will you be my Valentine? ❤️
+            </h2>
+            <div class="options">
+                <button class="btn-yes" id="yesBtn">
+                    <i class="fas fa-heart"></i> YES! <i class="fas fa-heart"></i>
+                </button>
+                <button class="btn-no" id="noBtn">
+                    <i class="fas fa-times"></i> No
+                </button>
+            </div>
+            <p style="margin-top: 30px; color: #666; font-size: 0.9rem;">
+                Choose wisely... 😉
             </p>
         </div>
     </div>
 
-    <!-- Memory 2 -->
-    <div class="timeline-item">
-        <div class="timeline-date">June 30, 2025</div>
-        <div class="memory-card">
-            <h2>Our First Date</h2>
-            <div class="memory-media">
-                <img src="datekiss.jpg" alt="Our first date" class="memory-img">
-            </div>
-            <p class="memory-text">
-                This was our first offical date together, I mean we weren't alone but still I think it counts. We were still in that phase of being comfortable with each other but still very shy.
+    <!-- MAIN WEBSITE CONTENT -->
+    <div class="main-site" id="mainSite">
+        <!-- Decorative roses -->
+        <div class="rose rose-1">🌹</div>
+        <div class="rose rose-2">🌹</div>
+        <div class="rose rose-3">🌹</div>
+        <div class="rose rose-4">🌹</div>
+        
+        <div class="container">
+            <header>
+                <h1>To My Beautiful Valentine Bisu ❤️</h1>
+                <p class="subtitle">Thank you for saying yes! Now let's relive our beautiful memories and enjoy our first Valentine together...</p>
                 
-                I remember you were lost and we had to wait for you (like always 🙄) and even when taking photos we both were shy. Then we went to the restaurant and had food and drinks and you held my hand and we looked into each other eyes and had our first kiss. This day was also when KC's Bar ko uk 😜 suru vako ani tespaxi tw sadhai thamel gaye paxi ek choti tw janu nai parxa hahah.
-            </p>
+                <div class="music-player">
+                    <div class="music-info">
+                        <i class="fas fa-music"></i>
+                        <span>Our Song</span>
+                    </div>
+                    <audio id="myAudio" controls loop>
+                        <source src="khat.mp3" type="audio/mpeg">
+                        Your browser does not support audio
+                    </audio>
+                </div>
+            </header>
+
+            <!-- TIMELINE SECTION -->
+            <main class="timeline">
+                
+                <!-- MEMORY 1: First Meeting -->
+                <div class="timeline-item">
+                    <div class="timeline-date">June 27, 2025</div>
+                    <div class="memory-card">
+                        <h2>Our First Meeting</h2>
+                        <div class="memory-media">
+                            <video controls class="memory-video">
+                                <source src="first.mp4" type="video/mp4">
+                                Your browser does not support videos.
+                            </video>
+                        </div>
+                        <p class="memory-text">
+                            The day my life changed forever. I still remember how you smiled and my heart skipped a beat, it was love at first sight. From that moment, I knew you were someone special.
+                            
+                            Every time I watch this video, it takes me back to that day. You looked so beautiful and I was so nervous that didn't know what to say (until I got lil drunk) after that well you already know 😉.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MEMORY 2: First Date -->
+                <div class="timeline-item">
+                    <div class="timeline-date">June 30, 2025</div>
+                    <div class="memory-card">
+                        <h2>Our First Date</h2>
+                        <div class="memory-media">
+                            <img src="datekiss.jpg" alt="Our first date" class="memory-img">
+                        </div>
+                        <p class="memory-text">
+                            This was our first official date together, I mean we weren't alone but still I think it counts. We were still in that phase of being comfortable with each other but still very shy.
+                            
+                            I remember you were lost and we had to wait for you (like always 🙄) and even when taking photos we both were shy. Then we went to the restaurant and had food and drinks and you held my hand and we looked into each other eyes and had our first kiss. This day was also when KC's Bar ko uk 😜 suru vako ani tespaxi tw sadhai thamel gaye paxi ek choti tw janu nai parxa hahah.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MEMORY 3: Bihe Ko Din -->
+                <div class="timeline-item">
+                    <div class="timeline-date">July 09, 2025</div>
+                    <div class="memory-card">
+                        <h2>Bihe Ko Din</h2>
+                        <div class="memory-media">
+                            <img src="wedding.jpg" alt="Wedding day" class="memory-img">
+                        </div>
+                        <p class="memory-text">
+                            Riya didi ko bihe ma, timlai kurda kurda I started feeling anxious because you were taking so long to show up ani I also couldn't wait to see how you looked. When you finally arrived, my heart skipped a beat seeing how beautiful you looked 😍.
+                            
+                            We couldn't act like a couple since sabbai family haru hununthiyo, so hami group ma basyum tara timi hami sanga vanda sani sanga aajai basyo. Tarw ni, we were always next to each other and we talked through our eyes, shared quiet smiles, and spoke without really looking at each other. Ani aslo yo photo khichda I was a little scared timlai ni thaxa kina ki kasailey dhekxa vanera, but now this moment lives with us as a memory we won't forget 🥰.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MEMORY 4: First Movie Together -->
+                <div class="timeline-item">
+                    <div class="timeline-date">July 21, 2025</div>
+                    <div class="memory-card">
+                        <h2>First Movie Together</h2>
+                        <div class="memory-media">
+                            <img src="movie.jpg" alt="First movie together" class="memory-img">
+                        </div>
+                        <p class="memory-text">
+                            How can I forget this day haha first time watching a movie together and it became our favorite movie with the song "Tum ho toh" being OUR song.
+                            
+                            But more than the movie and us sitting in the back, me massaging you, and sharing this moment together; my favorite part was how mad you were when I arrived 30 minutes late 😂.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MEMORY 5: Girlfriend Day -->
+                <div class="timeline-item">
+                    <div class="timeline-date">August 01, 2025</div>
+                    <div class="memory-card">
+                        <h2>Girlfriend Day</h2>
+                        <div class="memory-media">
+                            <img src="gfday.jpg" alt="Girlfriend day" class="memory-img">
+                        </div>
+                        <p class="memory-text">
+                            Oh ho yo day tw kasari birsinu timi kati surprise vako thiyo "SUPRISE" reaction "XYAAAAA" 😐. Tei ni timlai alli pani soch thiyena ki mailey kei garxu vanera. 
+                            
+                            Yo din ni ekdamai memorable thiyo the surprise arkai like reaction socheko jasto na vayeni auta memory vayo ani fere fere kati choti record garem ramro reaction aauna lai 😭. Yo purai raat nai ramro ramailo thiyo hai uufff ramailo ramailo 😜.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MEMORY 6: Mandir -->
+                <div class="timeline-item">
+                    <div class="timeline-date">August 13, 2025</div>
+                    <div class="memory-card">
+                        <h2>Jai Shri Ram, Jai Hanuman 🕉</h2>
+                        <div class="memory-media">
+                            <img src="mandir.jpg" alt="Mandir" class="memory-img">
+                        </div>
+                        <p class="memory-text">
+                            Our first time at this mandir it was something so special ani yo mandir kasto special cha like idk yo mandir ma gaye paxi kasto arkai feel huncha kasari explain garney timlai ni testai huncha hola hai.
+                            
+                            Ani yespaxi timley hanuman chalisa padhum na dinkai j mageko tei huncha vaneko thiyo hana... ahiley samma sadhai hanuman chalisa padhxu ma dinkai man shanti stress sabbai harauxa.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MEMORY 7: SASA Twan -->
+                <div class="timeline-item">
+                    <div class="timeline-date">August 15, 2025</div>
+                    <div class="memory-card">
+                        <h2>SASA Twan</h2>
+                        <div class="memory-media">
+                            <img src="sasa.jpg" alt="SASA" class="memory-img">
+                        </div>
+                        <p class="memory-text">
+                            I mean yo din yo photo yo raat hamro like yo photo herye paxi affai face ma muskan aauxa... aru kei vanna ni aaudaina this photo this moment I don't think needs any explanation it's just US and it's so iconic ughhh FAV FAV FAV 🥰.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MEMORY 8: Pokhara Trip -->
+                <div class="timeline-item">
+                    <div class="timeline-date">Dec 20-26, 2025</div>
+                    <div class="memory-card">
+                        <h2>Pokhara Trip</h2>
+                        <div class="memory-media">
+                            <video controls class="memory-video">
+                                <source src="pokharaa.mp4" type="video/mp4">
+                                Your browser does not support videos.
+                            </video>
+                        </div>
+                        <p class="memory-text">
+                            Our first trip together I mean it was so amazing had sooooooooooo many good moments and of course there were some bad moments too but that's how life is.
+                            
+                            I'm running out of things to say HAHAHA... I mean just look at the video our smile, how we look at each other, the happiness we share I mean there is too much too say and not enough words to justify what I want to say what I feel looking back at the trip so much good times so much fun so much memory.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MEMORY 9: Random Fav Memories -->
+                <div class="timeline-item">
+                    <div class="timeline-date">Un-Dated</div>
+                    <div class="memory-card">
+                        <h2>Some Random Fav Memories</h2>
+                        <div class="memory-media">
+                            <video controls class="memory-video">
+                                <source src="mixx.mp4" type="video/mp4">
+                                Your browser does not support videos.
+                            </video>
+                        </div>
+                        <p class="memory-text">
+                            These are just some only some of the memories, moments that as I was scrolling just put a smile on my face.. there are 1000+ moments I could choose from because they all have their own stories and memories attached to it but I mean that would take me months 😅.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MEMORY 10: Kalo Boko -->
+                <div class="timeline-item">
+                    <div class="timeline-date">January 2, 2026</div>
+                    <div class="memory-card">
+                        <h2>Kalo Boko 🙄</h2>
+                        <div class="memory-media">
+                            <video controls class="memory-video">
+                                <source src="tiktok.mp4" type="video/mp4">
+                                Your browser does not support videos.
+                            </video>
+                        </div>
+                        <p class="memory-text">
+                            Aba yo tw k vanu I think the title and video is enough hahaha... but I mean I want say that for you I can go out of my comfort zone to make you happy and see you smile. 
+                            
+                            Timlai thaxa testo tiktok esto banauna man lagdaina tara idk you asked and I didn't give a second thought and just did it.. yo video herda ma affai surprise hunchu ki esto ni garye vanerw haha but it came out good 😝 OFC ma vayesi ramro tw affai aauxa 😌.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MEMORY 11: 6 Month Anniversary -->
+                <div class="timeline-item">
+                    <div class="timeline-date">January 11, 2026</div>
+                    <div class="memory-card">
+                        <h2>6 Month Anniversaryyy</h2>
+                        <div class="memory-media">
+                            <video controls class="memory-video">
+                                <source src="6mons.mp4" type="video/mp4">
+                                Your browser does not support videos.
+                            </video>
+                        </div>
+                        <p class="memory-text">
+                            Ohhhhhhh yo din yo raat everything I mean there is nothing I can say like this video herye paxi affai tyo purai moment bihana dheki raati samma ko yaad aauxa.
+                            
+                            6 month anniversary tw babal ley manayem hai hamiley hehehe 🤭😉.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MEMORY 12: Pashupatinath Mandir -->
+                <div class="timeline-item">
+                    <div class="timeline-date">January 12, 2026</div>
+                    <div class="memory-card">
+                        <h2>Shri Pashupatinath Mandir</h2>
+                        <div class="memory-media">
+                            <video controls class="memory-video">
+                                <source src="mandir2-1.mp4" type="video/mp4">
+                                Your browser does not support videos.
+                            </video>
+                        </div>
+                        <p class="memory-text mantra-text">
+                            OM NAMA SHIVAYA NAMAHA 🕉️. OM NAMA SHIVAYA NAMAHA 🕉️. OM NAMA SHIVAYA NAMAHA 🕉️. OM NAMA SHIVAYA NAMAHA 🕉️. OM NAMA SHIVAYA NAMAHA 🕉️. OM NAMA SHIVAYA NAMAHA 🕉️. OM NAMA SHIVAYA NAMAHA 🕉️. OM NAMA SHIVAYA NAMAHA 🕉️. OM NAMA SHIVAYA NAMAHA 🕉️. 
+                            
+                            OM NAMA SHIVAYA NAMAHA 🕉️. OM NAMA SHIVAYA NAMAHA 🕉️. OM NAMA SHIVAYA NAMAHA 🕉️. OM NAMA SHIVAYA NAMAHA 🕉️. OM NAMA SHIVAYA NAMAHA 🕉️. OM NAMA SHIVAYA NAMAHA 🕉️. OM NAMA SHIVAYA NAMAHA 🕉️. OM NAMA SHIVAYA NAMAHA 🕉️. OM NAMA SHIVAYA NAMAHA 🕉️.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MEMORY 13: Ring Ring -->
+                <div class="timeline-item">
+                    <div class="timeline-date">January 12, 2026</div>
+                    <div class="memory-card">
+                        <h2>Ring Ring 💍</h2>
+                        <div class="memory-media">
+                            <img src="promise.jpg" alt="Promise ring" class="memory-img">
+                        </div>
+                        <p class="memory-text">
+                            Ummmmmmmmmmm.... I'm really starting to run out of words to say I feel like the video, the photo, the moment just speak for itself and I have nothing else to say.
+                            
+                            I mean these are only few of the moments we shared and it still feels like a small amount, in such a small amount of time we have created so many memories looking back it's amazing and crazy. So much has happened till this point good, bad, lessons, so much "too much too much" 😂 just life has happened. Let's not look at anything else right now and lets just enjoy this moment of sharing our first Valentine together.
+                        </p>
+                    </div>
+                </div>
+
+            </main>
+
+            <!-- FOOTER -->
+            <footer>
+                <p class="love-message">
+                    Made with <span class="heart">❤️</span> for my Valentine
+                </p>
+                <p>
+                    All the moments we have shared have been the best moments filled with love, I hope to see you forever happy and achieve all your dreams. May God bless you and protect you from all the pains and struggles. 🧿🕉❤️
+                </p>
+                <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin: 20px 0;">
+                    <span style="width: 30px; height: 2px; background: #c62828;"></span>
+                    <span style="font-size: 1.2rem;">💕</span>
+                    <span style="width: 30px; height: 2px; background: #c62828;"></span>
+                </div>
+                <p style="font-family: 'Dancing Script', cursive; font-size: 1.5rem; color: #c62828; margin: 10px 0;">
+                    I Love You Today, Tomorrow, and Forever wherever life takes us <span class="heart">❤️</span> ♾️
+                </p>
+                <p style="margin-top: 20px; font-size: 0.9rem; color: #a1887f;">
+                    <i class="rose-emoji">🌹</i> With Love from Sanu Maya
+                </p>
+            </footer>
         </div>
     </div>
 
-    <!-- Memory 3 -->
-    <div class="timeline-item">
-        <div class="timeline-date">July 09, 2025</div>
-        <div class="memory-card">
-            <h2>Bihe Ko Din</h2>
-            <div class="memory-media">
-                <img src="wedding.jpg" alt="Wedding day" class="memory-img">
-            </div>
-            <p class="memory-text">
-                Riya didi ko bihe ma, timlai kurda kurda I started feeling anxious because you were taking so long to show up ani I also couldn't wait to see how you looked. When you finally arrived, my heart skipped a beat seeing how beautiful you looked 😍.
+    <script>
+        // VALENTINE PROPOSAL LOGIC
+        document.addEventListener('DOMContentLoaded', function() {
+            const proposalPage = document.getElementById('proposalPage');
+            const mainSite = document.getElementById('mainSite');
+            const yesBtn = document.getElementById('yesBtn');
+            const noBtn = document.getElementById('noBtn');
+            
+            let clickCount = 0;
+            const messages = [
+                "Are you sure? 🥺",
+                "Maybe think again? 💔",
+                "Pretty please? 🙏",
+                "My heart is breaking... 💔",
+                "You're making me cry! 😢",
+                "Okay, fine... but I'll keep asking! 💘"
+            ];
+            
+            // YES BUTTON
+            yesBtn.addEventListener('click', function() {
+                this.innerHTML = '<i class="fas fa-heart"></i> YAY! <i class="fas fa-heart"></i>';
+                this.style.background = '#4CAF50';
+                this.style.transform = 'scale(1.2)';
+                this.style.boxShadow = '0 0 30px #4CAF50';
                 
-                We couldn't act like a couple since sabbai family haru hununthiyo, so hami group ma basyum tara timi hami sanga vanda sani sanga aajai basyo. Tarw ni, we were always next to each other and we talked through our eyes, shared quiet smiles, and spoke without really looking at each other. Ani aslo yo photo khichda I was a little scared timlai ni thaxa kina ki kasailey dhekxa vanera, but now this moment lives with us as a memory we won't forget 🥰.
-            </p>
-        </div>
-    </div>
-
-    <!-- Continue this pattern for ALL your memories -->
-    <!-- Copy the same structure for each memory block -->
-    
-</main>
+                const proposalContent = document.querySelector('.proposal-content');
+                proposalContent.innerHTML = `
+                    <div style="text-align: center; padding: 40px;">
+                        <div style="font-size: 4rem; color: #ff4081; margin: 20px 0; animation: heartbeat 1s infinite;">
+                            ❤️💕💖💘💝
+                        </div>
+                        <h1 style="font-family: 'Dancing Script', cursive; font-size: 3rem; color: #c62828;">
+                            You said YES! 🎉
+                        </h1>
+                        <p style="font-size: 1.2rem; color: #8b0000; margin: 20px 0;">
+                            I'm the happiest person in the world! 😍
+                        </p>
+                        <div style="font-size: 2rem; color: #ff4081; margin: 30px 0;">
+                            💖💖💖💖💖
+                        </div>
+                        <p style="color: #666;">
+                            Taking you to our special memories...
+                        </p>
+                    </div>
+                `;
+                
+                setTimeout(() => {
+                    proposalPage.style.opacity = '0';
+                    setTimeout(() => {
+                        proposalPage.style.display = 'none';
+                        mainSite.classList.add('visible');
+                        
+                        const audio = document.getElementById('myAudio');
+                        setTimeout(() => {
+                            audio.volume = 0.3;
+                            audio.play().catch(e => console.log("Click to play audio"));
+                        }, 1000);
+                    }, 500);
+                }, 2000);
+            });
+            
+            // NO BUTTON - Runs away
+            noBtn.addEventListener('mouseover', function() {
+                if (window.innerWidth > 768) {
+                    clickCount++;
+                    const x = Math.random() * (window.innerWidth - this.offsetWidth - 20);
+                    const y = Math.random() * (window.innerHeight - this.offsetHeight - 20);
+                    
+                    this.style.position = 'fixed';
+                    this.style.left = `${Math.max(10, x)}px`;
+                    this.style.top = `${Math.max(10, y)}px`;
+                    
+                    const messageIndex = Math.min(clickCount - 1, messages.length - 1);
+                    this.innerHTML = `<i class="fas fa-times"></i> ${messages[messageIndex]}`;
+                    
+                    const scale = 1 - (clickCount * 0.1);
+                    this.style.transform = `scale(${Math.max(scale, 0.5)})`;
+                    
+                    if (clickCount >= messages.length) clickCount = 0;
+                }
+            });
+            
+            noBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                this.innerHTML = '<i class="fas fa-heart-broken"></i> You have to choose YES!';
+                this.style.background = '#ff9800';
+                
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-times"></i> No';
+                    this.style.background = '#f44336';
+                }, 1000);
+            });
+        });
+        
+        // AUDIO SETUP
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('myAudio');
+            if (audio) {
+                audio.loop = true;
+                audio.volume = 0.3;
+            }
+        });
+    </script>
+</body>
+</html>
