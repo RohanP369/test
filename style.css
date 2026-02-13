@@ -75,7 +75,7 @@ audio {
     margin-top: 30px;
 }
 
-/* Central line - DESKTOP */
+/* DESKTOP STYLES */
 @media (min-width: 769px) {
     .timeline::before {
         content: '';
@@ -89,25 +89,20 @@ audio {
         border-radius: 2px;
         box-shadow: 0 0 10px rgba(198, 40, 40, 0.3);
     }
-}
-
-/* Timeline item */
-.timeline-item {
-    display: flex;
-    margin-bottom: 60px;
-    position: relative;
-    width: 100%;
-}
-
-/* DESKTOP STYLES (769px and above) */
-@media (min-width: 769px) {
+    
     .timeline-item {
-        justify-content: flex-end;
+        display: flex;
         align-items: center;
+        margin-bottom: 60px;
+        position: relative;
     }
     
     .timeline-item:nth-child(odd) {
         justify-content: flex-start;
+    }
+    
+    .timeline-item:nth-child(even) {
+        justify-content: flex-end;
     }
     
     .timeline-item:nth-child(odd) .memory-card {
@@ -120,7 +115,6 @@ audio {
         width: 45%;
     }
     
-    /* Desktop date positioning */
     .timeline-item:nth-child(odd) .timeline-date {
         left: 25%;
         transform: translateX(-50%);
@@ -131,7 +125,6 @@ audio {
         transform: translateX(50%);
     }
     
-    /* Desktop heart markers */
     .timeline-item::before {
         content: '❤️';
         position: absolute;
@@ -151,18 +144,24 @@ audio {
         box-shadow: 0 0 0 4px rgba(198, 40, 40, 0.2);
         transition: all 0.3s ease;
     }
+    
+    .timeline-item:hover::before {
+        transform: translate(-50%, -50%) scale(1.2);
+        background: #c62828;
+        color: white;
+    }
 }
 
-/* MOBILE STYLES (768px and below) */
+/* MOBILE STYLES */
 @media (max-width: 768px) {
     .timeline {
-        padding-left: 20px;
+        padding-left: 10px;
     }
     
     .timeline::before {
         content: '';
         position: absolute;
-        left: 20px;
+        left: 25px;
         top: 0;
         bottom: 0;
         width: 4px;
@@ -171,32 +170,39 @@ audio {
     }
     
     .timeline-item {
+        display: flex;
         flex-direction: column;
         align-items: flex-start;
         margin-bottom: 50px;
+        position: relative;
+        width: 100%;
     }
     
     .memory-card {
-        width: calc(100% - 40px);
+        width: calc(100% - 20px);
         margin-left: 40px !important;
+        margin-right: 0 !important;
     }
     
     .timeline-date {
         position: relative !important;
-        left: 0 !important;
-        right: auto !important;
+        left: 40px !important;
         top: 0 !important;
+        right: auto !important;
         transform: none !important;
         margin-bottom: 15px;
-        margin-left: 40px;
         display: inline-block;
         width: fit-content;
+        max-width: calc(100% - 50px);
+        white-space: normal;
+        word-break: break-word;
+        text-align: center;
     }
     
     .timeline-item::before {
         content: '❤️';
         position: absolute;
-        left: 20px;
+        left: 25px;
         top: 0;
         transform: translateX(-50%);
         width: 36px;
@@ -213,7 +219,7 @@ audio {
     }
 }
 
-/* Memory Card - Universal */
+/* MEMORY CARD - UNIVERSAL */
 .memory-card {
     background: #fff8f8;
     border-radius: 15px;
@@ -237,7 +243,7 @@ audio {
     font-family: 'Dancing Script', cursive;
 }
 
-/* Timeline Date - Universal */
+/* TIMELINE DATE */
 .timeline-date {
     background: #c62828;
     color: white;
@@ -251,24 +257,22 @@ audio {
     white-space: nowrap;
 }
 
-/* Mobile date adjustment */
 @media (max-width: 768px) {
     .timeline-date {
         white-space: normal;
-        word-break: break-word;
-        text-align: center;
-        max-width: calc(100% - 60px);
+        font-size: 0.95rem;
+        padding: 6px 15px;
     }
 }
 
-/* Media container */
+/* MEDIA CONTAINER */
 .memory-media {
     width: 100%;
     margin: 15px 0;
     text-align: center;
 }
 
-/* Images - Fully Responsive */
+/* IMAGES - RESPONSIVE */
 .memory-img {
     max-width: 100%;
     width: auto;
@@ -282,12 +286,12 @@ audio {
     background: #f5f5f5;
 }
 
-/* Videos - Portrait with Auto-Adjust Size */
+/* VIDEOS - PORTRAIT ASPECT RATIO 2:3 (800x1200) */
 .memory-video {
     width: 100%;
     max-width: min(400px, 90%);
     height: auto;
-    aspect-ratio: 2 / 3; /* 800x1200 portrait ratio */
+    aspect-ratio: 2 / 3;
     border-radius: 10px;
     border: 3px solid #ffcdd2;
     display: block;
@@ -296,12 +300,11 @@ audio {
     object-fit: cover;
 }
 
-/* Video controls */
 .memory-video::-webkit-media-controls-panel {
     background: rgba(198, 40, 40, 0.8);
 }
 
-/* Memory text */
+/* MEMORY TEXT */
 .memory-text {
     color: #555;
     line-height: 1.8;
@@ -314,7 +317,17 @@ audio {
     border-left: 4px solid #c62828;
 }
 
-/* Footer */
+/* MANTRA TEXT SPECIAL STYLING */
+.mantra-text {
+    font-family: 'Dancing Script', 'Poppins', sans-serif;
+    color: #c62828;
+    font-size: 1.1rem;
+    text-align: center;
+    line-height: 2;
+    letter-spacing: 1px;
+}
+
+/* FOOTER */
 footer {
     text-align: center;
     margin-top: 60px;
@@ -344,7 +357,7 @@ footer {
     50% { transform: scale(1.2); }
 }
 
-/* Rose decorations - Hide on mobile */
+/* ROSE DECORATIONS */
 .rose {
     position: fixed;
     font-size: 2rem;
@@ -352,6 +365,7 @@ footer {
     opacity: 0.2;
     z-index: -1;
     animation: float 8s infinite ease-in-out;
+    pointer-events: none;
 }
 
 .rose-1 { top: 10%; left: 5%; animation-delay: 0s; }
@@ -364,14 +378,13 @@ footer {
     50% { transform: translateY(-25px) rotate(5deg); }
 }
 
-/* Hide roses on mobile */
 @media (max-width: 768px) {
     .rose {
         display: none;
     }
 }
 
-/* Small phone adjustments */
+/* EXTRA SMALL DEVICES */
 @media (max-width: 480px) {
     body {
         padding: 10px;
@@ -385,12 +398,17 @@ footer {
         max-width: 100%;
     }
     
-    .timeline-date {
-        font-size: 0.9rem;
-        padding: 6px 15px;
-    }
-    
     .memory-card {
         padding: 15px;
+    }
+    
+    .timeline-date {
+        font-size: 0.85rem;
+        padding: 5px 12px;
+    }
+    
+    .memory-text {
+        padding: 12px;
+        font-size: 0.95rem;
     }
 }
